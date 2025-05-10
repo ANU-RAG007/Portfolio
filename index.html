@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anurag Sharma - Portfolio</title>
+  <style>
+    :root {
+      --main-bg: #f4f4f4;
+      --accent: #3b82f6;
+      --accent-dark: #2563eb;
+      --header-bg: #0a192f;
+      --text-light: #a8b2d1;
+      --text-dark: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: white;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .background-video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-video-container video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      animation: glow 3s ease-in-out infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); }
+      50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); }
+      100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); }
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header h2 {
+      margin-top: 0.5rem;
+      font-weight: normal;
+      font-size: 1.2rem;
+      color: var(--text-light);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem 5rem; /* Added bottom padding to avoid overlap */
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    p strong {
+      text-decoration: underline;
+    }
+
+    .dropdown-container {
+      margin: 2rem 0;
+    }
+
+    .dropdown {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .dropdown-button {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+      color: white;
+      padding: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    .dropdown-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+    }
+
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      padding: 0 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown-content.open {
+      max-height: 500px;
+      padding: 0.5rem;
+    }
+
+    .dropdown-content.open a {
+      animation: fadeIn 0.3s ease-out forwards;
+      opacity: 0;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.7rem 1rem;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin: 0.3rem 0;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      opacity: 0.85;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: translateX(5px);
+      opacity: 1;
+    }
+
+    .contact-button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-align: center;
+      font-size: 1.1rem;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      transition: background-color 0.3s ease, border 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .contact-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+    }
+
+    .dropdown-content.open a:nth-child(1) { animation-delay: 0.5s; }
+    .dropdown-content.open a:nth-child(2) { animation-delay: 1s; }
+    .dropdown-content.open a:nth-child(3) { animation-delay: 1.5s; }
+    .dropdown-content.open a:nth-child(4) { animation-delay: 2s; }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .dropdown-button { font-size: 1rem; }
+    }
+  </style>
+
+  <script>
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle("open");
+    }
+  </script>
+</head>
+<body>
+
+  <div class="background-video-container">
+    <video autoplay loop muted>
+      <source src="bg2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <img src="profile.png" alt="Anurag Sharma" class="profile-pic" />
+      <div>
+        <h1>Anurag Sharma</h1>
+        <h2>Designing Digital Experiences That Convert</h2>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p>
+      I specialize in creating modern <strong>Landing Pages</strong>, stunning <strong>MS Presentations</strong>,
+      powerful <strong>Excel Automation</strong>, and all-around <strong>MS Office work</strong>.
+    </p>
+    <p>
+      Below you'll find samples of my recent work. Want your own custom landing page? I create designs that fit your style and your budget.
+    </p>
+
+    <div class="dropdown-container">
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('landingPages')">
+          🔽 Sample Landing Pages
+        </button>
+        <div id="landingPages" class="dropdown-content">
+          <a href="https://anu-rag007.github.io/landing-page-templates/">SpeedX Creator</a>
+          <a href="https://anu-rag007.github.io/neon-grid/">Neon Tech Grid</a>
+          <a href="https://anu-rag007.github.io/gambler-s-vault/">Gambler's Vault</a>
+          <a href="#">Other Work Samples</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('websitesCreated')">
+          🔽 Websites Created by Me
+        </button>
+        <div id="websitesCreated" class="dropdown-content">
+          <a href="https://anu-rag007.github.io/PicXpert/">PicXpert</a>
+          <a href="#">Weather</a>
+          <a href="#">Other</a>
+        </div>
+      </div>
+    </div>
+
+    <a class="contact-button" href="contactme.html">📩 Contact Me</a>
+  </main>
+
+</body>
+</html>
